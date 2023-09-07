@@ -32,6 +32,13 @@ export default function AddNewSneaker({ setShowSidebar }: AddNewSneakerProps) {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         setShowSidebar(!(await addNewSneaker(formData)));
+        setFormData({
+            sneakerName: '',
+            brand: '',
+            price: 0,
+            size: 0,
+            year: 0,
+        });
     };
 
     return (
