@@ -2,7 +2,7 @@
  * Backend API host
  */
 
-const crudEndpoint = 'fed19afb148a448e89611ef87c43db92';
+const crudEndpoint = '6719aae994574089ae3cde445c0f2d2a';
 
 export const apiCatalog = {
     baseUrl: `https://crudcrud.com/api/${crudEndpoint}`,

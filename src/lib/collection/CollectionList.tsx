@@ -23,7 +23,7 @@ export default function CollectionList({ search }: CollectionListProps) {
     async function fetchData() {
         try {
             const data = await getSneakers();
-            setSneakers(testData);
+            setSneakers(data);
         } catch (error) {
             console.error('Error fetching sneakers:', error);
         }
