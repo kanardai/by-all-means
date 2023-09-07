@@ -15,14 +15,14 @@ export default function SidebarContainer({
     show,
 }: SidebarContainerProps) {
     return (
-        <div style={{zIndex: '12'}}>
+        <DivOuterWrapper style={{ zIndex: '12' }} show={show}>
             <DivBackdrop show={show} />
             <DivSidebarContainer show={show}>
                 <DivSidebar show={show}>
                     <DivInnerWrapper>{children}</DivInnerWrapper>
                 </DivSidebar>
             </DivSidebarContainer>
-        </div>
+        </DivOuterWrapper>
     );
 }
 
@@ -71,11 +71,18 @@ const DivBackdrop = styled.div<DivSidebarProps>`
     visibility: ${(props) => (props.show ? 'visible' : 'hidden')};
     animation: ${(props) => (props.show ? fadeIn : fadeOut)} 0.5s linear;
     transition: visibility 0.5s linear;
-    
 `;
 
 const DivInnerWrapper = styled.div`
     width: 82%;
+`;
+
+type DivOuterWrapperProps = {
+    show: boolean;
+};
+
+const DivOuterWrapper = styled.div<DivOuterWrapperProps>`
+    visibility: ${({ show }) => (show ? 'visible' : 'hidden')};
 `;
 
 export const fadeIn = keyframes`
