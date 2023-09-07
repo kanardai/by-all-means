@@ -13,7 +13,6 @@ type AddNewSneakerProps = {
 };
 
 export default function AddNewSneaker({ setShowSidebar }: AddNewSneakerProps) {
-    const [dataAlert, setDataAlert] = useState(true);
     const [formData, setFormData] = useState<SneakerInfo>({
         sneakerName: '',
         brand: '',
@@ -30,8 +29,9 @@ export default function AddNewSneaker({ setShowSidebar }: AddNewSneakerProps) {
         });
     };
 
-    const handleSubmit = async () => {
-        setShowSidebar(await addNewSneaker(formData));
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        setShowSidebar(!(await addNewSneaker(formData)));
     };
 
     return (

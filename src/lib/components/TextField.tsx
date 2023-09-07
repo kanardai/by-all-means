@@ -99,7 +99,7 @@ const ImageInput = styled(Image)`
 const InputText = styled.input`
     border: none;
     height: 90%;
-    width: 70%;
+    width: 97%;
     font-family: ${font.exconRegular};
     font-size: ${fontSize.normal};
     line-height: ${fontSize.large};

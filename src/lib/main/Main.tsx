@@ -25,7 +25,7 @@ export default function Main() {
                     setShow={setShowSidebar}
                     content={sidebarContent}
                 />
-                <CollectionList search={search} />
+                <CollectionList search={search} showSidebar={showSidebar} />
             </DivAppContainer>
         </>
     );

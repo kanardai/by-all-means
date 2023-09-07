@@ -6,7 +6,9 @@ import ButtonIcon from './components/ButtonIcon';
 type ButtonProps = {
     active?: boolean;
     children: string;
-    clickHandler?: (e?: React.MouseEvent<HTMLElement>) => void;
+    clickHandler?: (
+        e?: React.MouseEvent<HTMLElement> | React.FormEvent
+    ) => void;
     icon?: IconTypes;
     size?: ButtonSize;
     color: string;

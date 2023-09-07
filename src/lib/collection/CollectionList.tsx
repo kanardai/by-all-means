@@ -13,10 +13,14 @@ import { testData } from '@/services/testData';
 
 type CollectionListProps = {
     search: string;
+    showSidebar: boolean;
 };
 
 // main component
-export default function CollectionList({ search }: CollectionListProps) {
+export default function CollectionList({
+    search,
+    showSidebar,
+}: CollectionListProps) {
     const [sneakers, setSneakers] = useState<SneakerInfo[] | undefined>();
     const [sort, setSort] = useState<Sorting>('year');
 
@@ -30,8 +34,10 @@ export default function CollectionList({ search }: CollectionListProps) {
     }
 
     useEffect(() => {
-        fetchData();
-    }, []);
+        setTimeout(() => {
+            fetchData();
+        }, 500);
+    }, [showSidebar]);
 
     const filteredSneakers = filterCollection(sneakers, search);
     const sortedSneakers = sortCollection(filteredSneakers, sort);

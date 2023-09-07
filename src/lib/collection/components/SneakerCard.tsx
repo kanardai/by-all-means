@@ -55,6 +55,15 @@ const DivCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    animation: fadeIn 0.5s ease-in-out forwards;
 `;
 
 const DivInfo = styled.div`
