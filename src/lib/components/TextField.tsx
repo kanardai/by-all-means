@@ -12,23 +12,25 @@ import styled from '@emotion/styled';
 import searchImg from './images/search.svg';
 import Image from 'next/image';
 import { useState } from 'react';
+import { css, keyframes } from '@emotion/react';
+import { getMaxLength } from '@/utils/getMaxLength';
 
 type TextFieldNames = 'Name' | 'Brand' | 'Price' | 'Size US' | 'Year';
 
 type TextFieldProps = {
+    alert?: boolean;
     fieldName?: TextFieldNames;
     inputOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     inputName: string;
-    inputType?: 'text' | 'number';
     inputValue: string | number;
     searchIcon?: boolean;
 };
 
 export default function TextField({
+    alert,
     fieldName,
     inputOnChange,
     inputName,
-    inputType = 'text',
     searchIcon,
     inputValue,
 }: TextFieldProps) {
@@ -50,17 +52,21 @@ export default function TextField({
                 </DivFieldName>
             )}
 
-            <DivInput isFocused={isInputFocused} data-name="Text Field">
+            <DivInput
+                alert={alert}
+                isFocused={isInputFocused}
+                data-name="Text Field"
+            >
                 {searchIcon && <ImageInput src={searchImg} alt="search icon" />}
                 <InputText
                     id={inputName}
-                    maxLength={15}
+                    maxLength={getMaxLength(fieldName)}
                     name={inputName}
                     onBlur={handleInputBlur}
                     onFocus={handleInputFocus}
                     onChange={inputOnChange}
                     placeholder={searchIcon ? 'Search' : ''}
-                    type={inputType}
+                    type="text"
                     value={inputValue}
                 />
             </DivInput>
@@ -69,6 +75,7 @@ export default function TextField({
 }
 
 type DivInputProps = {
+    alert?: boolean;
     isFocused: boolean;
 };
 
@@ -83,6 +90,13 @@ const DivInput = styled.div<DivInputProps>`
     align-items: center;
     height: 3.3vw;
     border-radius: ${typographySize.xxSmall};
+
+    ${({ alert }) =>
+        alert &&
+        css`
+            border: 0.2vw solid ${colors.red};
+            animation: ${shake} 0.3s ease-in-out;
+        `};
 `;
 
 const DivFieldName = styled.div`
@@ -110,4 +124,22 @@ const InputText = styled.input`
     :focus {
         outline: none;
     }
+`;
+
+const shake = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 `;
