@@ -47,7 +47,7 @@ export default function SneakerCard({
 
 const DivCard = styled.div`
     background-color: ${colors.white};
-    box-shadow: 0px 3px 5px ${colors.shadow};
+    box-shadow: 0px 3px 5px ${colors.gray50};
     border-radius: ${typographySize.xSmall};
     width: 28vw;
     aspect-ratio: 16/7;
