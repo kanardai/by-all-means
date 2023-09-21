@@ -52,6 +52,8 @@ export default function AddNewSneaker({ setShowSidebar }: AddNewSneakerProps) {
 
         setShowSidebar(!(await addNewSneaker(formData)));
 
+        setAlerts([]);
+
         setFormData({
             sneakerName: '',
             brand: '',
